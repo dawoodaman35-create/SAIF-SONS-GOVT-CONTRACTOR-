@@ -1,1 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAIF & SONS | Ultimate Govt Contractor</title>
+    <!-- Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #002D62;
+            --accent: #FFD700;
+            --glass: rgba(255, 255, 255, 0.15);
+            --navy-dark: #001529;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background: #f0f4f8;
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Gradient */
+        .bg-animated {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #f0f4f8, #e2e8f0, #cbd5e1);
+            background-size: 400% 400%;
+            z-index: -1;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Navbar */
+        nav {
+            position: fixed;
+            top: 15px;
+            left: 5%;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .logo { font-weight: 900; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .logo span { color: #0056b3; }
+
+        /* Hero Section with Zoom Effect */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80') center/cover;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 50px 50px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 21, 41, 0.7);
+        }
+
+        .hero-content { position: relative; z-index: 2; }
+        .hero h1 { font-size: 3rem; margin-bottom: 15px; line-height: 1; }
+        .hero p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px; }
+
+        /* Stats Cards with Glow */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 0 20px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.8);
+            transition: 0.4s;
+        }
+
+        .stat-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,45,98,0.15); }
+        .stat-card h2 { font-size: 2.2rem; color: #0056b3; }
+        .stat-card p { font-size: 0.8rem; font-weight: 600; color: #64748b; }
+
+        /* Experience Highlight Overlay */
+        .exp-badge {
+            background: var(--accent);
+            color: var(--navy-dark);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Services Glass Grid */
+        .services { padding: 80px 20px; }
+        .service-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.4);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .icon-box {
+            width: 70px; height: 70px;
+            background: var(--primary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center; justify-content: center;
+            color: var(--accent);
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        /* Footer & Contact Section */
+        .contact-area {
+            background: var(--navy-dark);
+            padding: 60px 20px;
+            border-radius: 50px 50px 0 0;
+            color: white;
+            text-align: center;
+        }
+
+        .action-btn {
+            width: 100%;
+            padding: 18px;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-map { background: var(--accent); color: var(--navy-dark); }
+        .btn-wa { background: #25D366; color: white; }
+        .btn-call { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
+
+        .btn-map:hover { transform: scale(1.02); filter: brightness(1.1); }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-animated"></div>
+
+    <nav data-aos="fade-down">
+        <div class="logo">SAIF & <span>SONS</span></div>
+        <div style="font-size: 0.6rem; background: #22c55e; color: white; padding: 4px 10px; border-radius: 20px;">
+            <i class="fas fa-bolt"></i> ACTIVE
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="exp-badge" data-aos="zoom-in">8+ YEARS EXPERIENCE</div>
+            <h1 data-aos="fade-up" data-aos-delay="200">Excellence in <br>Government Works</h1>
+            <p data-aos="fade-up" data-aos-delay="400">Leading Infrastructure & Civil Contractors in Islamabad</p>
+            <a href="tel:03169639932" class="action-btn btn-map" style="width: auto; display: inline-flex; padding: 15px 30px;" data-aos="fade-up" data-aos-delay="600">
+                <i class="fas fa-phone-volume"></i> Contact Us
+            </a>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat-card" data-aos="flip-left">
+            <h2>8+</h2>
+            <p>YEARS EXP</p>
+        </div>
+        <div class="stat-card" data-aos="flip-right">
+            <h2>150+</h2>
+            <p>PROJECTS</p>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <section class="services">
+        <h2 style="text-align: center; margin-bottom: 40px;" data-aos="fade-up">Premium Expertise</h2>
+        
+        <div class="service-card" data-aos="fade-left">
+            <div class="icon-box"><i class="fas fa-road"></i></div>
+            <div>
+                <h3 style="font-size: 1.1rem;">Road Infrastructure</h3>
+                <p style="font-size: 0.8rem; opacity: 0.7;">Modern asphalt and concrete carpeting with precision.</p>
+            </div>
+        </div>
+
+        <div class="service-card" data-aos="fade-right">
+            <div class="icon-box"><i class="fas fa-building"></i></div>
+            <div>
+                <h3 style="font-size: 1.1rem;">Civil Structures</h3>
+                <p style="font-size: 0.8rem; opacity: 0.7;">State-of-the-art government building developments.</p>
+            </div>
+        </div>
+
+        <div class="service-card" data-aos="fade-left">
+            <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+            <div>
+                <h3 style="font-size: 1.1rem;">Safety & Compliance</h3>
+                <p style="font-size: 0.8rem; opacity: 0.7;">100% adherence to Pak Engineering Council standards.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-area">
+        <h2 data-aos="zoom-in" style="margin-bottom: 10px;">Visit Our Office</h2>
+        <p data-aos="fade-up" style="opacity: 0.7; font-size: 0.9rem; margin-bottom: 30px;">
+            Saif Arcade Plot No 460, Main Hajj Complex Road, Sector I-14/3, Islamabad, 44000
+        </p>
+
+        <div class="btn-group" data-aos="fade-up">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Saif+Sons+Govt+Contractor+Saif+Arcade+Plot+460+Islamabad" target="_blank" class="action-btn btn-map">
+                <i class="fas fa-map-marked-alt"></i> START NAVIGATION (MAPS)
+            </a>
+            
+            <a href="https://wa.me/923169639932" class="action-btn btn-wa">
+                <i class="fab fa-whatsapp"></i> CHAT ON WHATSAPP
+            </a>
+
+            <a href="tel:03169639932" class="action-btn btn-call">
+                <i class="fas fa-phone-alt"></i> DIRECT CALL
+            </a>
+        </div>
+    </section>
+
+    <footer style="padding: 20px; text-align: center; font-size: 0.7rem; opacity: 0.5; color: white; background: var(--navy-dark);">
+        © 2026 SAIF & SONS | ALL RIGHTS RESERVED
+    </footer>
+
+    <!-- Animation Library Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true
+        });
+    </script>
+</body>
+</html>
